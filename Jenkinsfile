@@ -27,13 +27,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "cp -R /home/jenkins/tomcat-demo.pem **/target/*.war deploy"
+                        sh "cp -R /home/jenkins/tomcat-demo.pem **/target/*.war /home/deploy"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "cp -R /home/jenkins/tomcat-demo.pem **/target/*.war webapps"
+                        sh "cp -R /home/jenkins/tomcat-demo.pem **/target/*.war /home/webapps"
                     }
                 }
             }
