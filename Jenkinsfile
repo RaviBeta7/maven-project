@@ -1,5 +1,5 @@
-import groovy.swing.SwingBuilder 
-import javax.swing.* 
+//import groovy.swing.SwingBuilder 
+//import javax.swing.* 
 pipeline {
     agent any
 
@@ -36,7 +36,7 @@ stages{
 
                 stage ("Deploy to Production"){
                     steps {
-                       class MyModel {
+                     /*  class MyModel {
  			  @Bindable int count = 0
 				}
 
@@ -46,7 +46,7 @@ stages{
    			 gridLayout(cols: 1, rows: 2)
     			 label(text: bind(source: model, sourceProperty: 'count', converter: { v ->  v? "Clicked $v times": ''}))
    			 button('Click me!', actionPerformed: { model.count++ })                 
-                        
+                        */
                         //sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/webapps"
                         sh "date"
                     
