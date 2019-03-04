@@ -34,23 +34,21 @@ stages{
                     }
                 }
 
-                stage ("Deploy to Production"){
+         stage ('Deployments'){
+            parallel{
+                stage ('Deploy to Staging'){
                     steps {
-                     /*  class MyModel {
- 			  @Bindable int count = 0
-				}
-
-			def model = new MyModel()
-			new SwingBuilder().edt {
-  			frame(title: '', size: [100, 100], locationRelativeTo: null, show: true) {
-   			 gridLayout(cols: 1, rows: 2)
-    			 label(text: bind(source: model, sourceProperty: 'count', converter: { v ->  v? "Clicked $v times": ''}))
-   			 button('Click me!', actionPerformed: { model.count++ })                 
-                        */
-                        //sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/webapps"
-                        sh "date"
-                    
+			   sh "ls"
+                        //sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                    }
                 }
+
+          stage ("Deploy to Production"){
+                    steps {
+			    sh "date"
+                        //sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                    }
+
             }
         }
     }
