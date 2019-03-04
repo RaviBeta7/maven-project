@@ -45,14 +45,11 @@ stages{
   			frame(title: '', size: [100, 100], locationRelativeTo: null, show: true) {
    			 gridLayout(cols: 1, rows: 2)
     			 label(text: bind(source: model, sourceProperty: 'count', converter: { v ->  v? "Clicked $v times": ''}))
-   			 button('Click me!', actionPerformed: { model.count++ })
-  
-
-                    
+   			 button('Click me!', actionPerformed: { model.count++ })                 
                         
                         //sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/webapps"
                         sh "date"
-                    }
+                    
                 }
             }
         }
