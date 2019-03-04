@@ -1,5 +1,3 @@
-//import groovy.swing.SwingBuilder 
-//import javax.swing.* 
 pipeline {
     agent any
 
@@ -20,7 +18,7 @@ stages{
             post {
                 success {
                     echo 'Now Archiving...'
-                   // archiveArtifacts artifacts: '**/target/*.war'
+                    archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
@@ -29,26 +27,17 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                       // sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/deploy"
-                        sh "ls"
-                    }
-                }
-
-         stage ('Deployments'){
-            parallel{
-                stage ('Deploy to Staging'){
-                    steps {
-			   sh "ls"
+			  sh "ls"
                         //sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
-          stage ("Deploy to Production"){
+                stage ("Deploy to Production"){
                     steps {
 			    sh "date"
-                        //sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                       // sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
-	  	}
+                }
             }
         }
     }
