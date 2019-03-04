@@ -34,6 +34,16 @@ stages{
 
                 stage ("Deploy to Production"){
                     steps {
+                       def myapp = new SwingBuilder()
+                        def buttonPanel = {
+                                    myapp.panel(constraints : BorderLayout.SOUTH) {
+	
+                                        button(text : 'Option A', actionPerformed : {
+                                         println 'accecpt'
+                                 })
+                     }
+                    }
+                        
                         //sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/webapps"
                         sh "date"
                     }
