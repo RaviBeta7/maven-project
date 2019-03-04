@@ -18,7 +18,7 @@ stages{
             post {
                 success {
                     echo 'Now Archiving...'
-                    archiveArtifacts artifacts: '**/target/*.war'
+                   // archiveArtifacts artifacts: '**/target/*.war'
                 }
             }
         }
@@ -27,13 +27,15 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/deploy"
+                       // sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/deploy"
+                        sh "ls"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/webapps"
+                        //sh "cp -r /home/jenkins/tomcat-demo.pem **/target/*.war /home/webapps"
+                        sh "date"
                     }
                 }
             }
